@@ -1,14 +1,13 @@
 
 import express from "express";
 import mongoose from "mongoose";
-
+import dotenv from "dotenv";
+dotenv.config();
 const app = express();
 app.use(express.json());
 
 const connect = mongoose
-  .connect(
-    "mongodb://pranjalagrawal:Pranjal123@ac-0woilcs-shard-00-00.vze0atf.mongodb.net:27017,ac-0woilcs-shard-00-01.vze0atf.mongodb.net:27017,ac-0woilcs-shard-00-02.vze0atf.mongodb.net:27017/?ssl=true&replicaSet=atlas-fwwvz2-shard-0&authSource=admin&appName=Cluster0",
-  )
+  .connect(process.env.URL)
   .then(() => {
     console.log("DB Connection: OK, Server Running: OK");
   })
