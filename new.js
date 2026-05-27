@@ -19,16 +19,24 @@ const userSchema = new mongoose.Schema({
   first_name: {
     type: String,
     required: true,
+    minlength:3,
+    maxlength:20,
+    match: [/^[A-Za-z]+$/, "First name should contain only alphabets"],
+    
   },
   last_name: {
     type: String,
     required: true,
+    minlength:3,
+    maxlength:20,
+    match: [/^[A-Za-z]+$/, "Last name should contain only alphabets"],
   },
 
   email: {
     type: String,
     required: true,
     unique: true,
+    match: [/^\S+@\S+\.\S+$/, "Please enter a valid email"],
   },
   gender: {
     type: String,
